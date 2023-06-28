@@ -1,0 +1,11 @@
+name: imperiacoords
+main: crbuck.imperiacoords.Plugin
+version: 1.0-SNAPSHOT
+api-version: 1.15
+commands:
+   real-coords:
+      description: Convert in-game coords to real coords
+      usage: §C/real-coords OR /real-coords <x> <z>
+   mc-coords:
+      description: Convert real coords to in-game coords
+      usage: §C/mc-coords <latitude> <longitude>
