@@ -10,35 +10,31 @@ public class ImperiaCoords extends JavaPlugin {
 
   public void onEnable() {
     FileConfiguration config = getConfig();
-    config.addDefault("northWorldBorder", -26624);
-    config.addDefault("eastWorldBorder", 61440);
+    config.addDefault("latitudeConversionFactor", -614.35); //-614.350069875
+    config.addDefault("longitudeConversionFactor", 563.19); // 563.191611719
     config.options().copyDefaults(true);
     saveConfig();
 
-    setLongitudeScaleFactor();
-    setLatitudeScaleFactor();
+    setLongitudeConversionFactor();
+    setLatitudeConversionFactor();
         
     this.getCommand("real-coords").setExecutor(new RealCoordsExecutor());
     this.getCommand("mc-coords").setExecutor(new McCoordsExecutor());
   }
 
-  public static double getLatitudeScaleFactor() {
+  public static double getLatitudeConversionFactor() {
     return latitudeScaleFactor;
   }
 
-  private void setLatitudeScaleFactor() {
-    if(this.getConfig().getInt("northWorldBorder") < 0) {
-        latitudeScaleFactor = -longitudeScaleFactor;
-    } else {
-        latitudeScaleFactor = longitudeScaleFactor;
-    }
-  }
-
-  public static double getLongitudeScaleFactor() {
+    public static double getLongitudeConversionFactor() {
     return longitudeScaleFactor;
   }
 
-  private void setLongitudeScaleFactor() {
-      longitudeScaleFactor = (double) this.getConfig().getInt("eastWorldBorder") / 180;
+  private void setLatitudeConversionFactor() {
+    latitudeScaleFactor = this.getConfig().getDouble("latitudeConversionFactor");
+  }
+
+  private void setLongitudeConversionFactor() {
+    longitudeScaleFactor = this.getConfig().getDouble("longitudeConversionFactor");
   }
 }

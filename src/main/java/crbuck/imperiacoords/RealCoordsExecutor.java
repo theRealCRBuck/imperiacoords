@@ -51,8 +51,8 @@ public class RealCoordsExecutor implements CommandExecutor {
     }
 
     public LatLon convertToRealCoords(double x, double z) {
-        double latitude = z / ImperiaCoords.getLatitudeScaleFactor();
-        double longitude = x / ImperiaCoords.getLongitudeScaleFactor();
+        double latitude = z / ImperiaCoords.getLatitudeConversionFactor();
+        double longitude = x / ImperiaCoords.getLongitudeConversionFactor();
         return new LatLon(latitude, longitude);
     }
 }

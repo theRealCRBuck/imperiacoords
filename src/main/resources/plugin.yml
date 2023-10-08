@@ -1,5 +1,5 @@
 name: imperiacoords
-main: crbuck.imperiacoords.Plugin
+main: crbuck.imperiacoords.ImperiaCoords
 version: 1.0-SNAPSHOT
 api-version: 1.15
 commands:

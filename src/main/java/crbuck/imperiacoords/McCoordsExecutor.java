@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 
 public class McCoordsExecutor implements CommandExecutor {
     String greenColorCode = "\u00A7a";
-    String messageFormat = "\n" + "Real Coords: %f, %f\n" + "MC Coords: %f, %f\n" + greenColorCode + "play.imperiamc.net:25668/?worldname=world&mapname=flat&zoom=6&x=%f&y=64&z=%f" + "\n";
+    String messageFormat = "\n" + "Real Coords: %f, %f\n" + "MC Coords: %f, %f\n" + greenColorCode + "http://mc.playimperia.com:25580/?worldname=world&mapname=flat&zoom=6&x=%f&y=64&z=%f" + "\n";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -24,7 +24,7 @@ public class McCoordsExecutor implements CommandExecutor {
             double x = mcCoords.getX();
             double z = mcCoords.getZ();
 
-            sender.sendMessage(String.format(messageFormat, x, z, latitude, longitude, x, z));
+            sender.sendMessage(String.format(messageFormat, latitude, longitude, x, z, x, z));
             return true;
         }
  
@@ -32,8 +32,8 @@ public class McCoordsExecutor implements CommandExecutor {
     }
 
     public Location convertToMcCoords(double latitude, double longitude) {
-        double x = longitude * ImperiaCoords.getLongitudeScaleFactor();
-        double z = latitude * ImperiaCoords.getLatitudeScaleFactor();
+        double x = longitude * ImperiaCoords.getLongitudeConversionFactor();
+        double z = latitude * ImperiaCoords.getLatitudeConversionFactor();
         return new Location(null, x, 64, z);
     }
 }
